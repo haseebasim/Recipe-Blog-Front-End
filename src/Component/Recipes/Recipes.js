@@ -10,11 +10,6 @@ import Preloader from '../Preloader/Preloader'
 function Recipes({fetchCatRecipeList,fetchRECIPELIST}) {
     const [Limit] = useState(10)
     const [Skip, setSkip] = useState(0);
-    const [Loading, setLoading] = useState(true)
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
 
     let categories_open = false
     const handleCategoriesSec = () =>{
@@ -49,7 +44,7 @@ function Recipes({fetchCatRecipeList,fetchRECIPELIST}) {
     return (
       <>
         {
-          Loading ? <Preloader/>:
+          
           <div className="recipes">
             {/* <div className="search_bar">
           <input className="search_input" type="text" placeholder="Search" />

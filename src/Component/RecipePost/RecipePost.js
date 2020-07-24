@@ -3,22 +3,20 @@ import "./RecipePost.css";
 import { Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import Comments from "../Comments/Comments";
-import axios from '../../utils/Axios'
-import {connect} from 'react-redux'
-import {fetchRecipePost} from '../../Redux/actions/recipePostAction'
+import axios from "../../utils/Axios";
+import { connect } from "react-redux";
+import { fetchRecipePost } from "../../Redux/actions/recipePostAction";
+import Preloader from "../Preloader/Preloader";
 
+function RecipePost({ match, fetchRecipePost, recipePost, loading }) {
+  const id = match.params.id;
+  const [comment, setcomment] = useState("");
 
-function RecipePost({match, fetchRecipePost, recipePost}) {
-  const id = match.params.id
-  const [loading, setLoading] = useState(true);
-  const [comment, setcomment] = useState('')
+  useEffect(() => {
+    fetchRecipePost(id);
+    console.log("recipePost useeffect");
+  }, [fetchRecipePost, id]);
 
-  useEffect( () => {
-     fetchRecipePost(id)
-     setLoading(false)
-     console.log('recipePost useeffect')
-  }, [fetchRecipePost,id]);
-  
   const handleSave = (id) => {
     if (window.sessionStorage.getItem("isLogedIn")) {
       axios
@@ -55,30 +53,28 @@ function RecipePost({match, fetchRecipePost, recipePost}) {
     }
   };
 
-  const handleComment =(id)=>{
-      axios
-        .post(
-          "add_comment",
-          {
-            comment_text: comment,
-            post_id: id,
+  const handleComment = (id) => {
+    axios
+      .post(
+        "add_comment",
+        {
+          comment_text: comment,
+          post_id: id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-            },
-          }
-        )
-        .catch((res) => {
-          console.log(res.data);
-        });
-        setcomment('')
-  }
+        }
+      )
+      .catch((res) => {
+        console.log(res.data);
+      });
+    setcomment("");
+  };
 
   return loading ? (
-    <div>
-      <h1>The Data is loading</h1>
-    </div>
+    <Preloader/>
   ) : (
     <div className="recipe_post">
       <h1 className="post_header">
@@ -106,7 +102,7 @@ function RecipePost({match, fetchRecipePost, recipePost}) {
       </div>
       <div className="post_comments_sec">
         <div className="post_login_link">
-          {window.sessionStorage.getItem("isLogedIn") ? null :(
+          {window.sessionStorage.getItem("isLogedIn") ? null : (
             <div>
               <p>For more awesome recipes login.</p>
               <Link className="post_login" to="/login">
@@ -114,18 +110,18 @@ function RecipePost({match, fetchRecipePost, recipePost}) {
               </Link>
               <p>OR</p>
             </div>
-          ) } 
+          )}
           <p>Follow</p>
           <div className="post_social_links">
-            <a href='/' >
+            <a href="/">
               <span className="fab fa-facebook-square"></span>
             </a>
 
-            <a href='/' >
+            <a href="/">
               <span className="fab fa-instagram"></span>
             </a>
 
-            <a href='/' >
+            <a href="/">
               <span className="fab fa-youtube"></span>
             </a>
           </div>
@@ -160,14 +156,18 @@ function RecipePost({match, fetchRecipePost, recipePost}) {
           <Comments recipe_id={id} />
         </div>
       </div>
-      <div className="snackbar">{window.sessionStorage.getItem('isLogedIn') ? 'Saved' :  'Please login to save the recipe'}</div>
+      <div className="snackbar">
+        {window.sessionStorage.getItem("isLogedIn")
+          ? "Saved"
+          : "Please login to save the recipe"}
+      </div>
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
-  recipePost: state.recipePost.item
+  recipePost: state.recipePost.item,
+  loading : state.recipePost.loading
 });
 
-
-export default connect(mapStateToProps, {fetchRecipePost})(RecipePost);
+export default connect(mapStateToProps, { fetchRecipePost })(RecipePost);

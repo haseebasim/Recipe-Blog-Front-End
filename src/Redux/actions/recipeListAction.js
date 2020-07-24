@@ -6,7 +6,8 @@ export const fetchRECIPELIST = (limit,skip)=>(dispatch)=>{
       .get(`/posts/${limit}/${skip}`)
       .then((res) => dispatch({
           type:FETCH_RECIPELIST,
-          payload: res.data
+          payload: res.data,
+          loading : false
       }))
       .catch((err) => {
         console.log(err);
@@ -21,6 +22,7 @@ export const fetchCatRecipeList = (limit,skip,cat)=>(dispatch) =>{
       dispatch({
         type: FETCH_CAT_RECIPELIST,
         payload: res.data,
+        loading: false,
       })
     )
     .catch((err) => {
@@ -35,10 +37,13 @@ export const fetchSavedRecipeList = (limit,skip) => (dispatch)=>{
           Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
         },
       })
-      .then((res) => dispatch({
+      .then((res) =>
+        dispatch({
           type: FETCH_SAVED_RECIPELIST,
-          payload: res.data
-      }))
+          payload: res.data,
+          loading: false,
+        })
+      )
       .catch((err) => {
         console.log(err);
       });

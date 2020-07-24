@@ -5,7 +5,8 @@ export const fetchRecipePost = (id)=> (dispatch) =>{
     axios.get(`/post/${id}`)
     .then((res) => dispatch({
         type: FETCH_RECIPE_POST,
-        payload: res.data
+        payload: res.data,
+        loading: false
     }))
     .catch(error => console.log(error));
 }

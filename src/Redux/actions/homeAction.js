@@ -7,6 +7,7 @@ export const fetchHomePosts = () => (dispatch) => {
       dispatch({
         type: FETCH_HOME_POSTS,
         payload: res.data,
+        loading: false
       })
     )
     .catch((error) => console.log(error));

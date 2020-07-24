@@ -18,23 +18,15 @@ function RecipeList({
   fetchSavedRecipeList,
   recipeList,
   saved_recipeList,
+  loading
 }) {
-  const [loading, setloading] = useState(true);
+  
  
   useEffect(() => {
     if (calledFrom === "Recipes") {
       fetchRECIPELIST(limit, skip);
-      if(recipeList){
-        setTimeout(()=>{
-            setloading(false)
-        },1000)
-
-      }
     } else if (calledFrom === "SavedRecipes") {
       fetchSavedRecipeList(limit, skip);
-      if (saved_recipeList) {
-          setloading(false);
-      }
     }
     return () => {
       
@@ -112,13 +104,14 @@ function RecipeList({
 
   return (
     <>
-      {loading ? null : <Recipe />}
+      {loading ? <Preloader/> : <Recipe />}
       <div className="snackbar">Please login to save the recipe</div>
     </>
   );
 }
 const mapStateToProps = (state) => ({
   recipeList: state.recipeList.items,
+  loading: state.recipeList.loading,
   saved_recipeList: state.recipeList.savedItems,
 });
 export default connect(mapStateToProps, {

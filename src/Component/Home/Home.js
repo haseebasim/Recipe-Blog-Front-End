@@ -6,16 +6,9 @@ import {connect } from 'react-redux'
 import {fetchHomePosts} from '../../Redux/actions/homeAction'
 import Preloader from '../Preloader/Preloader'
 
-function Home({fetchHomePosts , homePosts }) {
-    const [Loading, setLoading] = useState(true)
+function Home({fetchHomePosts , homePosts , loading}) {
     useEffect(() => {
         fetchHomePosts()
-        if(homePosts){
-            setTimeout(() => {
-              setLoading(false);
-            }, 1000);
-        }
-        
     }, [])
     
     const LatestRecipes = () =>{
@@ -57,7 +50,7 @@ function Home({fetchHomePosts , homePosts }) {
 
     return (
         <>
-        {   Loading ? <Preloader/> :
+        {   loading ? <Preloader/> :
             <div className='homepage'>
             <header className='header'>
                 <div className='header_bgt'>
@@ -86,7 +79,8 @@ function Home({fetchHomePosts , homePosts }) {
 }
 
 const mapStateToProps = (state) =>({
-    homePosts : state.homePosts.items
+    homePosts : state.homePosts.items,
+    loading : state.homePosts.loading
 })
 
 export default connect(mapStateToProps, {fetchHomePosts})(Home)

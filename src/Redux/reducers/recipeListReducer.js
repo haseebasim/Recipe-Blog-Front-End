@@ -2,7 +2,8 @@ import {FETCH_RECIPELIST,FETCH_SAVED_RECIPELIST,FETCH_CAT_RECIPELIST} from '../a
 
 const initialState={
     items:[],
-    savedItems:[]
+    savedItems:[],
+    loading : true
 }
 
 export default function(state=initialState, action){
@@ -11,16 +12,19 @@ export default function(state=initialState, action){
         return {
           ...state,
           items: action.payload,
+          loading: action.loading,
         };
       case FETCH_SAVED_RECIPELIST:
         return {
           ...state,
           savedItems: action.payload,
+          loading: action.loading,
         };
       case FETCH_CAT_RECIPELIST:
         return{
           ...state,
-          items: action.payload
+          items: action.payload,
+          loading : action.loading
         }
       default:
         return state;
