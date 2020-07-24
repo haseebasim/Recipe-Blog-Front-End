@@ -82,14 +82,14 @@ header::after{
 }
 
 .latest_recipe_card{
-    width: 250px;
+    width: 300px;
     text-decoration: none;
     color: black;
-    box-shadow: 0 0 3px black ;
+    box-shadow: 0 0 2px black ;
 }
 
 .card_img{
-    width: 250px;
+    width: 100%;
 }
 
 .card_text{
