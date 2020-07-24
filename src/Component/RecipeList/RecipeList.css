@@ -1,0 +1,106 @@
+
+.recipe_card{
+    display: grid;
+    margin-top: 30px;
+    width: 300px;
+    height: 320px;
+    box-shadow: 0 0 4px rgb(145, 145, 145);
+    border: 1px solid rgb(204, 204, 204);
+    transition: all .5s ease;
+    text-decoration: none;
+}
+
+.recipe_card_content_sec{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    column-gap: 10px;
+    margin: 0;
+    align-items: flex-start;
+}
+.recipe_card_content{
+    color: black;
+    text-decoration: none;
+    justify-self: start;
+    margin: 0;
+}
+
+
+
+
+.recipe_card_img{
+    width: 100%;
+}
+
+
+
+.recipe_card:hover::after{
+    content: 'Click to Read More';
+    background-color: #FF9D33;
+    color: white;
+    text-align: center;
+}
+
+.save_btn{
+    border: none;
+    background-color: transparent;
+    font-size: large;
+    transition: all .5s ease;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.save_btn:hover{
+    color: #FF9D33;
+}
+
+.snackbar{
+    background-color: #333;
+    height: fit-content;
+    width: 280px;
+    padding: 10px 10px;
+    position: fixed;
+    text-align: center;
+    color: white;
+    bottom: 40px;
+    left: 40%;
+    visibility: hidden;
+}
+
+.snackbar_show{
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+@media screen and (max-width:500px){
+    .recipe_card:hover::after{
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width:320px){
+    .recipe_card{
+        width: 250px;
+    }
+}

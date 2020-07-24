@@ -1,0 +1,27 @@
+*{
+    margin: 0 auto;
+    padding: 0 auto;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    outline: none;
+    text-justify: auto;
+    word-wrap: break-word;
+}
+
+html,body{
+    height: 100%;
+}
+
+
+.ask_login{
+    text-align: center;
+    padding: 150px 0;
+    font-size: calc(18px + (25 - 18) * ((100vw - 300px) / (1600 - 300)));;
+
+}
+
+.ask_login > a{
+    color: orange;
+    text-decoration: none;
+    font-size: calc(20px + (35 - 20) * ((100vw - 300px) / (1600 - 300)));;
+}

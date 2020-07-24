@@ -1,0 +1,60 @@
+.suggestion{
+    margin: 50px 30px;
+    display: grid;
+    justify-content: center;
+}
+
+.suggestion > h1{
+    font-size:calc(25px + (40 - 25) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.suggestion > p{
+    width: 450px;
+    margin-top: 20px;
+}
+
+.suggestion_form{
+    margin-top: 20px;
+    width: 450px;
+}
+
+.suggestion_form > textarea{
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #FF9D33;
+    transition: all .5s ease;
+}
+
+.suggestion_form  > textarea:focus{
+    box-shadow: 0 0 5px #FF9D33;
+}
+
+.suggestion_form > button{
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    padding: 10px;
+    color:black;
+    font-size:calc(15px + (18 - 15) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid #FF9D33;
+    margin-top: 20px;
+    transition: all .5s ease;
+}
+
+.suggestion_form > button:hover{
+    background-color: black;
+    color:#FF9D33;
+    border: 1px solid black;
+}
+
+@media screen and (max-width:500px){
+    .suggestion > p{
+        width: 300px;
+    }
+
+    .suggestion_form{
+        width: 300px;
+    }
+}

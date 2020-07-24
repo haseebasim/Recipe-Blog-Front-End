@@ -1,0 +1,18 @@
+.pagination_btn{
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #FF9D33;
+    color: white;
+    padding: 5px 15px;
+    font-size: large;
+    border: none;
+    transition: all .5s ease;
+}
+
+.pagination_btn:hover{
+    background-color: black;
+}
+
+.active_pag_btn{
+    background-color: black;
+}

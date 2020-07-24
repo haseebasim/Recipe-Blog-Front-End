@@ -1,0 +1,222 @@
+.recipe_post {
+  margin: 50px 30px;
+}
+
+.post_header {
+  font-size: calc(25px + (40 - 25) * ((100vw - 300px) / (1600 - 300)));
+  border-bottom: 1px solid #ff9d33;
+}
+
+.post_header > span{
+  float: right;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.post_ask_login > a{
+  color: #ff9d33;
+  font-size: x-large;
+  text-decoration: none;
+}
+.post_header > span:hover{
+  color: #ff9d33;
+}
+
+.post_desc_vid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border-bottom: 1px solid #ff9d33;
+  padding-bottom: 50px;
+}
+
+.post_img {
+  margin-right: 0;
+  width: 100%;
+}
+
+.post_prep {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.ingredients_list {
+  list-style: none;
+}
+
+.post_ingrediants > h3 {
+  padding-bottom: 30px;
+}
+
+.post_ingrediants >* {
+    list-style: none;
+    padding-left: 0;
+}
+
+.post_ingrediants li{
+  margin-bottom: 15px;
+}
+
+
+
+.post_preparation {
+  padding-left: 20px;
+}
+
+.post_preparation > h3 {
+  padding-bottom: 30px;
+}
+
+.prep_steps li{
+  margin-bottom: 15px;
+}
+
+.prep_steps  h3 {
+  padding-bottom: 5px;
+}
+
+.prep_steps  p {
+  padding-bottom: 20px;
+}
+
+.post_comments_sec {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.post_login_link {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  padding: 30px 50px;
+  height: max-content;
+  justify-content: center;
+}
+
+.post_login_link > div > p {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.post_login {
+  display: flex;
+  width: fit-content;
+  background-color: #ff9d33;
+  padding: 5px 20px;
+  justify-self: center;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.post_social_links {
+  display: flex;
+  width: fit-content;
+  color: #ff9d33;
+}
+
+.post_social_links > a {
+  padding: 0 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.post_comments {
+  margin-left: 0;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.comment {
+  padding-left: 20px;
+  margin: 15px 0;
+  box-shadow: 0 0 5px rgb(201, 201, 201);
+  width: 100%;
+}
+
+.post_vid{
+    display: flex;    
+    width: 100%;
+    height: fit-content;
+}
+
+
+.comment_name {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+
+.comment_input {
+  display: flex;
+  align-items: center;
+}
+
+.comment_input > span{
+  color: black;
+  background-color: #ff9d33;
+  padding: 10px;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.comment_input > span:hover{
+  background-color: black;
+  color: white;
+}
+
+.comment_input > input {
+  border: 1px solid #ff9d33;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+  margin-top: 20px;
+}
+
+.comment_input > input:focus {
+  box-shadow: 0 0 5px #ff9d33;
+}
+@media screen and (max-width: 500px) {
+  .post_desc_vid {
+    grid-template-columns: auto;
+  }
+  .post_img {
+    margin-top: 15px;
+  }
+
+  .post_prep {
+    grid-template-columns: auto;
+  }
+
+  .post_ingrediants {
+    margin-bottom: 30px;
+  }
+
+  .ingredients_list {
+    padding-left: 0;
+  }
+
+  .post_vid {
+    display: flex;
+    width: 300px;
+    height: fit-content;
+  }
+
+  .post_preparation {
+    padding: 0;
+  }
+
+  .post_comments_sec {
+    grid-template-columns: auto;
+  }
+
+  .post_comments {
+    margin-top: 50px;
+    padding: 0;
+  }
+}

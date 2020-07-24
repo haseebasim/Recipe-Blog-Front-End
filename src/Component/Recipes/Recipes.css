@@ -1,0 +1,149 @@
+.recipes{
+    margin: 30px 30px 30px;
+}
+
+.search_bar{
+    display: flex;
+    width: 300px;
+    border: 1px solid #a3a3a3;
+    align-items: center;
+    padding: 0 15px;
+    border-radius: 20px;   
+}
+
+.search_input{
+    border: none;
+    padding: 8px;
+    width: 100%;
+}
+
+.search_input::placeholder{
+    color: #FF9D33;
+    font-weight: bold;
+}
+
+.search_icon{
+    color:#FF9D33;
+}
+
+.recipes_container{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.categories_col{
+    
+    margin-left:0px ;
+}
+
+.categories_col > h3{
+    font-size: calc(25px + (30 - 25) * ((100vw - 300px) / (1600 - 300)))  ;
+}
+
+.categories_list{
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.categories_list > li >button{
+    margin-bottom: 20px;
+    border: none;
+    background-color: transparent;
+    font-size: calc(15px + (18 - 15) * ((100vw - 300px) / (1600 - 300)));
+    cursor: pointer;
+}
+
+.recipes_list{
+    display: grid;;
+    grid-template-columns: auto auto auto;
+    margin: 0;
+    column-gap: 30px;
+}
+
+
+.recipes_col > h1{
+    font-size: calc(30px + (45 - 30) * ((100vw - 300px) / (1600 - 300)))  ;
+    text-align: center;
+}   
+
+.Pagination{
+    display: flex;
+    margin-top: 30px ;
+    justify-content: center;
+    width: fit-content;
+}
+
+.pagination_btn{
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #FF9D33;
+    color: white;
+    padding: 5px 15px;
+    font-size: large;
+    border: none;
+    transition: all .5s ease;
+}
+
+.pagination_btn:hover{
+    background-color: black;
+}
+
+
+@media screen and (min-width:1450px){
+
+    .recipes_list{
+        grid-template-columns: auto auto auto auto auto;
+    }
+}
+
+
+@media screen and (max-width:1300px){
+
+    .recipes_list{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width:768px){
+
+    .recipes_list{
+        grid-template-columns: auto;
+    }
+}
+@media screen and (max-width:500px){
+    
+    .search_bar{
+        width: 250px;
+    }
+
+    .recipes_container{
+        grid-template-columns: auto;
+
+    }
+
+    .categories_col{
+        width: 100%;
+    }
+    .categories_col > h3{
+        text-align: center;
+        cursor: pointer;
+    }
+    .categories_list{
+        height: 0px;
+        opacity: 0;
+        transition: all .5s ease;
+    }
+
+    .categories_list.categories_open{
+        display: block;
+        height: 100%;
+        opacity: 1;
+    }
+
+    .recipes_list{
+        grid-template-columns: auto;
+    }
+
+}

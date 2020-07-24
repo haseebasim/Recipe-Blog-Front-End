@@ -1,0 +1,79 @@
+.addpost {
+  margin: 30px 50px;
+  height: 100%;
+}
+
+.addpost_form {
+  height: 100%;
+}
+
+.addpost_input_fields_container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.addpost_inputs {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.addpost_inputs > input {
+  width: 50%;
+  padding: 8px;
+}
+
+.addpost_inputs > textarea {
+  width: 50%;
+  padding: 8px;
+}
+
+.quill_container {
+  margin-bottom: 100px;
+}
+
+.ingredient_quill {
+  width: 100%;
+  margin-bottom: 80px;
+  height: 200px;
+}
+
+.recipe_quill {
+  width: 100%;
+  height: 200px;
+}
+
+.tag_container {
+  margin: 20px 0;
+}
+
+.tag_btn {
+  background-color: rgb(199, 232, 243);
+  border: none;
+  padding: 5px 20px;
+  margin: 10px 15px 10px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.tag_btn:hover {
+  background-color: lightblue;
+}
+
+.selected_tags {
+  background-color: lightblue;
+  border: none;
+  padding: 8px;
+  font-size: small;
+  margin: 10px 15px 10px 0;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.5s ease;
+}
+
+.selected_tags_container{
+  padding: 10px 0;
+  
+}

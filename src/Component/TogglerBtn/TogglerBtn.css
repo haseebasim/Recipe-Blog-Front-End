@@ -1,0 +1,35 @@
+
+.navbar_toggler{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    visibility: hidden;
+    height: 100%;
+    margin-right: 0;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.bar{
+    background-color: #FF9D33;
+    border-radius: 3px;
+    content: '';
+    display: block;
+    width: 20px;
+    height: 4px;
+    transition: all .2s ease-in-out
+}
+
+.line2{
+    transform: translateY(3px);
+}
+
+.line3{
+    transform: translateY(6px);
+}
+
+@media screen and (max-width: 500px) {
+    .navbar_toggler{
+        visibility: visible;
+    }
+} 

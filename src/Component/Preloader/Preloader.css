@@ -1,0 +1,27 @@
+
+.preloader {
+    padding: 200px 0;
+}
+
+.spinner::before{
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 60px;
+    width: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    border-radius: 50%;
+    border: 3px solid lightgray;
+    border-left-color: #FF9D33;
+    border-top-color:#FF9D33 ;
+    animation: spinner-anim .7s linear infinite;
+}
+
+@keyframes spinner-anim{
+    to{
+        transform: rotate(360deg);
+    }
+}

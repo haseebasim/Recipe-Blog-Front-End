@@ -1,0 +1,29 @@
+
+.saved_recipe_list{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 30px;
+}
+
+.savedrecipes{
+    margin: 50px 30px;
+    display: grid;
+}
+
+@media screen and (min-width:1450px){
+    .saved_recipe_list{
+        grid-template-columns: auto auto auto auto auto ;
+    }
+}
+
+@media screen and (max-width:768px){
+    .saved_recipe_list{
+        grid-template-columns: auto auto ;
+    }
+}
+
+@media screen and (max-width:500px){
+    .saved_recipe_list{
+        grid-template-columns: auto ;
+    }
+}

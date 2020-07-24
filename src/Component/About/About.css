@@ -1,0 +1,52 @@
+.aboutus{
+    margin: 50px 30px ;
+    display: flex;
+    flex-direction: column;
+}
+
+.about_logo{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px solid #FF9D33;
+    box-shadow: 0 0 5px #FF9D33;
+    overflow: hidden;
+}
+
+.about_logo > img{
+    display: flex;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+}
+
+.about_content{
+    text-align: center;
+    margin-top: 30px;
+    width: 60%;
+}
+
+
+.about_content >h1{
+    font-size:calc(30px + (40 - 30) * ((100vw - 300px) / (1600 - 300)));
+    
+}
+
+.about_text{
+    padding-top: 20px;   
+}
+
+.about_span > a{
+    color: #FF9D33;
+    font-size: 22px;
+    text-decoration: none;
+
+}
+
+@media screen and (max-width: 768px)
+{
+    .about_content{
+        width: 100%;
+    }
+}
