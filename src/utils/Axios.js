@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 export default axios.create({
-  baseURL: "https://szfood-back-end.herokuapp.com",
+  baseURL: process.env.BASE_URL || "http://localhost:3001",
   responseType: "json",
 });
