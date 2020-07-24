@@ -18,21 +18,17 @@ function RecipeList({
   fetchSavedRecipeList,
   recipeList,
   saved_recipeList,
-  loading
+  loading,
 }) {
-  
- 
   useEffect(() => {
     if (calledFrom === "Recipes") {
       fetchRECIPELIST(limit, skip);
     } else if (calledFrom === "SavedRecipes") {
       fetchSavedRecipeList(limit, skip);
     }
-    return () => {
-      
-    };
-  }, [calledFrom,fetchRECIPELIST,fetchSavedRecipeList,limit,skip]);
-  
+    return () => {};
+  }, [calledFrom, fetchRECIPELIST, fetchSavedRecipeList, limit, skip]);
+
   const handleSave = (id) => {
     if (window.sessionStorage.getItem("isLogedIn")) {
       axios
@@ -48,6 +44,12 @@ function RecipeList({
           }
         )
         .then((res) => {
+          const snackbar = document.getElementsByClassName("snackbar")[0];
+          console.log(snackbar);
+          snackbar.classList.add("snackbar_show");
+          setTimeout(function () {
+            snackbar.classList.remove("snackbar_show");
+          }, 3000);
         })
         .catch((res) => {
           console.log(res.data);
@@ -61,12 +63,10 @@ function RecipeList({
     }
   };
 
-  const Data = ()=> calledFrom === "Recipes" ? recipeList : saved_recipeList; 
-  
+  const Data = () => (calledFrom === "Recipes" ? recipeList : saved_recipeList);
 
   const Recipe = () => {
     const reicpe_array = Data().map((recipe) => {
-     
       return (
         <div key={recipe._id} className="recipe_card">
           <img
@@ -78,7 +78,7 @@ function RecipeList({
             }
             alt="Food"
           />
-          <div className='recipe_card_content_sec'>
+          <div className="recipe_card_content_sec">
             <Link to={`/recipes/${recipe._id}`} className="recipe_card_content">
               <h3 className="recipe_card_header">{recipe.title}</h3>
             </Link>
@@ -104,8 +104,12 @@ function RecipeList({
 
   return (
     <>
-      {loading ? <Preloader/> : <Recipe />}
-      <div className="snackbar">Please login to save the recipe</div>
+      {loading ? <Preloader /> : <Recipe />}
+      <div className="snackbar">
+        {window.sessionStorage.getItem("isLogedIn")
+          ? "Saved"
+          : "Please login to save the recipe"}
+      </div>
     </>
   );
 }
