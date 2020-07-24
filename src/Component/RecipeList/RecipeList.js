@@ -28,6 +28,7 @@ function RecipeList({
         setTimeout(()=>{
             setloading(false)
         },1000)
+
       }
     } else if (calledFrom === "SavedRecipes") {
       fetchSavedRecipeList(limit, skip);
