@@ -1,4 +1,4 @@
-import {FETCH_RECIPELIST,FETCH_SAVED_RECIPELIST,FETCH_CAT_RECIPELIST} from '../actions/types'
+import {FETCH_RECIPELIST,FETCH_SAVED_RECIPELIST,FETCH_CAT_RECIPELIST, SET_NULL_LIST} from '../actions/types'
 
 const initialState={
     items:[],
@@ -8,6 +8,12 @@ const initialState={
 
 export default function(state=initialState, action){
     switch (action.type) {
+      case SET_NULL_LIST :
+        return{
+          ...state,
+          items: action.payload,
+          loading: action.loading
+        }
       case FETCH_RECIPELIST:
         return {
           ...state,
@@ -26,6 +32,7 @@ export default function(state=initialState, action){
           items: action.payload,
           loading : action.loading
         }
+      
       default:
         return state;
     }

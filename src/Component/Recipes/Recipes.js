@@ -2,12 +2,11 @@ import React, {useState} from 'react'
 import './Recipes.css'
 import RecipeList from '../RecipeList/RecipeList'
 import Pagination from '../Pagination/Pagination'
-import {fetchCatRecipeList , fetchRECIPELIST} from '../../Redux/actions/recipeListAction'
+import {fetchCatRecipeList , fetchRECIPELIST , setNULL} from '../../Redux/actions/recipeListAction'
 import { connect } from 'react-redux'
-import Preloader from '../Preloader/Preloader'
 
 
-function Recipes({fetchCatRecipeList,fetchRECIPELIST}) {
+function Recipes({fetchCatRecipeList,fetchRECIPELIST,setNULL}) {
     const [Limit] = useState(10)
     const [Skip, setSkip] = useState(0);
 
@@ -32,7 +31,7 @@ function Recipes({fetchCatRecipeList,fetchRECIPELIST}) {
       if(e.target.name !== 'All'){
       setSkip(0)
       const selected_category = e.target.name
-      
+      setNULL()
       fetchCatRecipeList(Limit,Skip,selected_category)
     }
     else{
@@ -107,4 +106,4 @@ function Recipes({fetchCatRecipeList,fetchRECIPELIST}) {
 
 
 
-export default connect(null,{fetchCatRecipeList,fetchRECIPELIST})(Recipes)
+export default connect(null,{fetchCatRecipeList,fetchRECIPELIST, setNULL})(Recipes)

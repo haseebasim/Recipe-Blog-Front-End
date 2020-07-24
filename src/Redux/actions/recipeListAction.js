@@ -1,5 +1,14 @@
-import {FETCH_RECIPELIST, FETCH_SAVED_RECIPELIST,FETCH_CAT_RECIPELIST} from '../actions/types'
+import {FETCH_RECIPELIST, FETCH_SAVED_RECIPELIST,FETCH_CAT_RECIPELIST, SET_NULL_LIST} from '../actions/types'
 import axios from '../../utils/Axios'
+
+export const setNULL = ()=>(dispatch)=>{
+  dispatch({
+    type: SET_NULL_LIST,
+    payload: [],
+    loading: true
+  })
+} 
+
 
 export const fetchRECIPELIST = (limit,skip)=>(dispatch)=>{
     axios
