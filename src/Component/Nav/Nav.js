@@ -21,9 +21,9 @@ function Nav({ handleToggler }) {
       )
       .then((res) => {
         console.log(res.data)
-        if (res.data === 1) {
+        if (res.data === "1") {
           window.sessionStorage.clear();
-         window.location.reload()
+          window.location.reload()
         }
       })
       .catch((res) => {
