@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, {useEffect } from 'react'
 import './Home.css'
 import Food from '../../assets/food.jpg'
 import {Link} from 'react-router-dom'

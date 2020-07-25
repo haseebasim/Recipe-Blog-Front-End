@@ -19,7 +19,12 @@ function Suggestion() {
           },
         }
       ).then(res=>{
-        window.location.reload()
+        const snackbar = document.getElementsByClassName("snackbar")[0];
+        snackbar.classList.add("snackbar_show");
+        setTimeout(function () {
+          snackbar.classList.remove("snackbar_show");
+          
+        }, 3000);
       });
     }
   };
@@ -48,6 +53,9 @@ function Suggestion() {
           Submit
         </button>
       </form>
+      <div className="snackbar">
+          Suggestion has been submited
+      </div>
     </div>
   ) : (
     <div className="ask_login">

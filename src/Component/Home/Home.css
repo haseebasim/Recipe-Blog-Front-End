@@ -88,6 +88,26 @@ header::after{
     box-shadow: 0 0 2px black ;
 }
 
+.latest_recipe_card:after{
+    display: flex;
+    content: 'Read More';
+    position: absolute;
+    top: 0;
+    background-color: #FF9D33;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    opacity: 0;
+    color: white;
+    font-size: 25px;
+    transition: all .5s linear;
+}
+
+.latest_recipe_card:hover::after{
+    opacity: .9;
+}
+
 .card_img{
     width: 100%;
 }

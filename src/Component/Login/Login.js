@@ -29,7 +29,7 @@ function Login() {
   const handleForm = (e) => {
     e.preventDefault();
     let run = false;
-    if (errors.emailError === "" && errors.passwordError === "") {
+    if (errors.emailError === "" && errors.passwordError === "" && values.email !== '' && values.password!=='') {
       run = true;
     } else {
       run = false;
@@ -113,7 +113,7 @@ function Login() {
       password: "",
     };
     if (
-      focus.email &&
+      focus.email && values.email !== '' &&
       !/^[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-z]/.test(values.email)
     ) {
       validErrors.email =
@@ -122,14 +122,14 @@ function Login() {
       validErrors.email = "";
     }
 
-    if (focus.userName && values.userName.length < 3) {
+    if (focus.userName && values.userName !== "" && values.userName.length < 3) {
       validErrors.userName = "User Name should be >= 3 characters";
     } else if (focus.userName && values.userName.length > 15) {
       validErrors.userName = "User Name should be <= 10 characters";
     } else {
       validErrors.userName = "";
     }
-    if (focus.password && values.password.length < 6) {
+    if (focus.password && values.password !== "" && values.password.length < 6) {
       validErrors.password = "The password cannot be less than 6 characters";
     } else if (focus.password && values.password.length > 20) {
       validErrors.password = "The password cannot be more than 20 characters";
@@ -145,102 +145,114 @@ function Login() {
     });
   };
   return (
-    <div className="login_signup">
-      <div className="selection_btn">
-        <button
-          id="login"
-          onClick={(e) => {
-            setForm("Login");
-          }}
-          className={Form === "Login" ? "active_tab" : null}
-        >
-          Login
-        </button>
-        <button
-          id="signup"
-          onClick={(e) => {
-            setForm("Signup");
-          }}
-          className={Form === "Signup" ? "active_tab" : null}
-        >
-          Signup
-        </button>
-      </div>
-      <form className="form_container">
-        <div className="form_header">
-          <p>{Form}</p>
+    <>
+      {window.sessionStorage.getItem("isLogedIn") ? (
+        <div className="logedin_text">
+          <span>{window.sessionStorage.getItem("userName")}</span>
+          <p>Login Succesful</p>
+          <p>Press the <span>Logout</span> button in the navigation bar to logout</p>  
         </div>
-        <div className="form_inputs_container">
-          {Form === "Signup" ? (
-            <div className="input_wrap">
-              <label className="input_label">User Name</label>
-              <div>
-                <input
-                  className="form_input"
-                  name="userName"
-                  type="text"
-                  onChange={valueHandler}
-                  value={values.userName}
-                  placeholder="User Name"
-                  onBlur={handleBlur}
-                  required
-                />
-                <p className="form_feedback">{errors.userNameError}</p>
-              </div>
-            </div>
-          ) : null}
-          <div className="input_wrap">
-            <label className="input_label">Email</label>
-            <div>
-              <input
-                className="form_input"
-                name="email"
-                type="email"
-                onChange={valueHandler}
-                value={values.email}
-                placeholder="Email"
-                onBlur={handleBlur}
-                required
-              />
-              <p className="form_feedback">{errors.emailError}</p>
-            </div>
-          </div>
-          <div className="input_wrap">
-            <label className="input_label">Password</label>
-            <div>
-              <input
-                className="form_input"
-                name="password"
-                type="password"
-                onChange={valueHandler}
-                value={values.password}
-                placeholder="Password"
-                onBlur={handleBlur}
-                required
-              />
-              <p className="form_feedback">{errors.passwordError}</p>
-            </div>
-          </div>
-          <div className="form_btn">
-            <button type="submit" onClick={handleForm}>
-              {Form}
+      ) : (
+        <div className="login_signup">
+          <div className="selection_btn">
+            <button
+              id="login"
+              onClick={(e) => {
+                setForm("Login");
+              }}
+              className={Form === "Login" ? "active_tab" : null}
+            >
+              Login
+            </button>
+            <button
+              id="signup"
+              onClick={(e) => {
+                setForm("Signup");
+              }}
+              className={Form === "Signup" ? "active_tab" : null}
+            >
+              Signup
             </button>
           </div>
-          {Form === "Login" ? (
-            <div>
-              <p className="signup_text">
-                Don't have an account?{" "}
-                <span onClick={(e) => setForm("Signup")}>Signup</span>
+          <form className="form_container">
+            <div className="form_header">
+              <p>{Form}</p>
+            </div>
+            <div className="form_inputs_container">
+              {Form === "Signup" ? (
+                <div className="input_wrap">
+                  <label className="input_label">User Name</label>
+                  <div>
+                    <input
+                      className="form_input"
+                      name="userName"
+                      type="text"
+                      onChange={valueHandler}
+                      value={values.userName}
+                      placeholder="User Name"
+                      onBlur={handleBlur}
+                      required
+                    />
+                    <p className="form_feedback">{errors.userNameError}</p>
+                  </div>
+                </div>
+              ) : null}
+              <div className="input_wrap">
+                <label className="input_label">Email</label>
+                <div>
+                  <input
+                    className="form_input"
+                    name="email"
+                    type="email"
+                    onChange={valueHandler}
+                    value={values.email}
+                    placeholder="Email"
+                    onBlur={handleBlur}
+                    required
+                  />
+                  <p className="form_feedback">{errors.emailError}</p>
+                </div>
+              </div>
+              <div className="input_wrap">
+                <label className="input_label">Password</label>
+                <div>
+                  <input
+                    className="form_input"
+                    name="password"
+                    type="password"
+                    onChange={valueHandler}
+                    value={values.password}
+                    placeholder="Password"
+                    onBlur={handleBlur}
+                    required
+                  />
+                  <p className="form_feedback">{errors.passwordError}</p>
+                </div>
+              </div>
+              <div className="form_btn">
+                <button type="submit" onClick={handleForm}>
+                  {Form}
+                </button>
+              </div>
+              {Form === "Login" ? (
+                <div>
+                  <p className="signup_text">
+                    Don't have an account?{" "}
+                    <span onClick={(e) => setForm("Signup")}>Signup</span>
+                  </p>
+                </div>
+              ) : null}
+              <p style={{ textAlign: "center" }} className="form_feedback">
+                {loginError}
               </p>
             </div>
-          ) : null}
-          <p style={{textAlign:'center'}} className="form_feedback">{loginError}</p>
-        </div>
-      </form>
-      {/* <a href={XML} target="_blank">
+          </form>
+          {/* <a href={XML} target="_blank">
         XML
       </a> */}
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 

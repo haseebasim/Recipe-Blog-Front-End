@@ -2,13 +2,14 @@ import React from "react";
 import "./Nav.css";
 import TogglerBtn from "../TogglerBtn/TogglerBtn";
 import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "../../utils/Axios";
 
 function Nav({ handleToggler }) {
-
+  
   const handleLogout = () => {
     console.log("works");
+    if(window.sessionStorage.getItem('isLogedIn')){
     axios
       .post(
         "/user/logout",
@@ -20,17 +21,17 @@ function Nav({ handleToggler }) {
         }
       )
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         if (res.data === 1) {
           window.sessionStorage.clear();
-          window.location.reload()
+          window.location.reload();
         }
       })
       .catch((res) => {
         console.log(res);
-      });
+      });}
   };
-
+  console.log(window.location.pathname)
   return (
     <nav>
       <div className="nav_brand">
@@ -41,7 +42,7 @@ function Nav({ handleToggler }) {
                 <span className="far fa-user"></span>
                 {window.sessionStorage.getItem("userName").split(" ", 1)}
               </p>
-              <span onClick={handleLogout}>Logout</span>
+              {/* <span onClick={handleLogout}>Logout</span> */}
             </div>
           ) : null}
         </div>
@@ -50,46 +51,70 @@ function Nav({ handleToggler }) {
       </div>
       <div className="nav_container">
         <div className="nav_item">
-          <Link to="/home" className="nav_link">
+          <NavLink activeClassName="active_nav" to="/home" className="nav_link">
             Home
-          </Link>
+          </NavLink>
         </div>
         <div className="nav_item">
-          <Link to="/about" className="nav_link">
+          <NavLink
+            activeClassName="active_nav"
+            to="/about"
+            className="nav_link"
+          >
             About
-          </Link>
+          </NavLink>
         </div>
         <div className="nav_item">
-          <Link to="/recipes" className="nav_link">
+          <NavLink
+            activeClassName="active_nav"
+            to="/recipes"
+            className="nav_link"
+          >
             Recipes
-          </Link>
+          </NavLink>
         </div>
         <div className="nav_item">
-          <Link to="/contact" className="nav_link">
+          <NavLink
+            activeClassName="active_nav"
+            to="/contact"
+            className="nav_link"
+          >
             Contact us
-          </Link>
+          </NavLink>
         </div>
         <div className="nav_item">
-          <Link to="/suggestion" className="nav_link">
+          <NavLink
+            activeClassName="active_nav"
+            to="/suggestion"
+            className="nav_link"
+          >
             Suggestions
-          </Link>
+          </NavLink>
         </div>
         <div className="nav_item">
-          <Link to="/saved_recipes" className="nav_link">
+          <NavLink
+            activeClassName="active_nav"
+            to="/saved_recipes"
+            className="nav_link"
+          >
             Saved Recipes
-          </Link>
+          </NavLink>
         </div>
         <div className="nav_item">
-          <Link to="/login" className="nav_link">
-            Login / Signup{" "}
-          </Link>
+          <NavLink
+            activeClassName="active_nav"
+            to= "/login"
+            
+            onClick={handleLogout}
+            className="nav_link"
+          >
+            {window.sessionStorage.getItem("isLogedIn")
+              ? "Logout"
+              : "Login / Signup"}
+          </NavLink>
         </div>
       </div>
     </nav>
   );
 }
-
-
-
-
 export default Nav;

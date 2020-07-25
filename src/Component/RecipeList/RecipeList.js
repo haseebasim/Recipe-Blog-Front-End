@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "../../utils/Axios";
 import "./RecipeList.css";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import Food from "../../assets/food.jpg";
 import {
   fetchRECIPELIST,
   fetchSavedRecipeList,
+  setNULL
 } from "../../Redux/actions/recipeListAction";
 import { connect } from "react-redux";
 import Preloader from "../Preloader/Preloader";
@@ -19,11 +20,14 @@ function RecipeList({
   recipeList,
   saved_recipeList,
   loading,
+  setShowPag,
+  setNULL
 }) {
   useEffect(() => {
     if (calledFrom === "Recipes") {
       fetchRECIPELIST(limit, skip);
     } else if (calledFrom === "SavedRecipes") {
+      setNULL()
       fetchSavedRecipeList(limit, skip);
     }
     return () => {};
@@ -66,6 +70,8 @@ function RecipeList({
   const Data = () => (calledFrom === "Recipes" ? recipeList : saved_recipeList);
 
   const Recipe = () => {
+    if(Data().length !== 0){
+    setShowPag(true)
     const reicpe_array = Data().map((recipe) => {
       return (
         <div key={recipe._id} className="recipe_card">
@@ -99,7 +105,13 @@ function RecipeList({
         </div>
       );
     });
-    return reicpe_array;
+  return reicpe_array;
+  }
+    else{
+      setShowPag(false)
+      const reicpe_array = <div className='no_recipe'>Sorry no Recipe Found </div>
+      return reicpe_array;
+    }
   };
 
   return (
@@ -121,4 +133,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   fetchRECIPELIST,
   fetchSavedRecipeList,
+  setNULL
 })(RecipeList);

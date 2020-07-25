@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Pagination.css";
 import { connect } from "react-redux";
 import {fetchPostCount} from '../../Redux/actions/paginationAction'
-function Pagination({limit, handleSkip , fetchPostCount, count}) {
+function Pagination({ShowPag,limit, handleSkip , fetchPostCount, count}) {
   
   const [active, setActive] = useState("1");
   useEffect(() => {
@@ -42,7 +42,7 @@ function Pagination({limit, handleSkip , fetchPostCount, count}) {
   };
   return (
     <div className="Pagination">
-      <PagBtn/>
+      {ShowPag ? <PagBtn/>:null}
     </div>
   );
 }

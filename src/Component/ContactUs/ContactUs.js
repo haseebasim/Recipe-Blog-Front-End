@@ -24,7 +24,12 @@ function ContactUs() {
                 comment: Contact.comment,
                 subject: 'Contact'
             }).then(res=>{
-                console.log(res.data)
+                const snackbar = document.getElementsByClassName("snackbar")[0];
+                snackbar.classList.add("snackbar_show");
+                setTimeout(function () {
+                  snackbar.classList.remove("snackbar_show");
+                  
+                }, 3000);
             });
         }
     }
@@ -96,6 +101,7 @@ function ContactUs() {
             Submit
           </button>
         </form>
+        <div className="snackbar">Form submited</div>
       </div>
     );
 }

@@ -43,6 +43,10 @@ nav{
     padding: 10px 0;
 }
 
+.active_nav{
+    color: black !important;
+}
+
 .nav_link{
     color: white;
     text-decoration: none;
@@ -61,7 +65,7 @@ nav{
     }
 
    
-   
+    
     .nav_brand >img {
         margin-right: 0;
         padding:0 10px;
