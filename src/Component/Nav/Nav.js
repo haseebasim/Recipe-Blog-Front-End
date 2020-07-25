@@ -2,36 +2,36 @@ import React from "react";
 import "./Nav.css";
 import TogglerBtn from "../TogglerBtn/TogglerBtn";
 import logo from "../../assets/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink ,Link} from "react-router-dom";
 import axios from "../../utils/Axios";
 
 function Nav({ handleToggler }) {
-  
   const handleLogout = () => {
     console.log("works");
-    if(window.sessionStorage.getItem('isLogedIn')){
-    axios
-      .post(
-        "/user/logout",
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-        if (res.data === 1) {
-          window.sessionStorage.clear();
-          window.location.reload();
-        }
-      })
-      .catch((res) => {
-        console.log(res);
-      });}
+    if (window.sessionStorage.getItem("isLogedIn")) {
+      axios
+        .post(
+          "/user/logout",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          if (res.data === 1) {
+            window.sessionStorage.clear();
+            window.location.reload();
+          }
+        })
+        .catch((res) => {
+          console.log(res);
+        });
+    }
   };
-  console.log(window.location.pathname)
+  console.log(window.location.pathname);
   return (
     <nav>
       <div className="nav_brand">
@@ -46,7 +46,9 @@ function Nav({ handleToggler }) {
             </div>
           ) : null}
         </div>
-        <img src={logo} alt="LOGO" />
+        <Link to='/home'>
+          <img src={logo} alt="LOGO" />
+        </Link>
         <TogglerBtn handleToggler={handleToggler} />
       </div>
       <div className="nav_container">
@@ -103,8 +105,7 @@ function Nav({ handleToggler }) {
         <div className="nav_item">
           <NavLink
             activeClassName="active_nav"
-            to= "/login"
-            
+            to="/login"
             onClick={handleLogout}
             className="nav_link"
           >

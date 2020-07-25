@@ -1,6 +1,7 @@
 
 .preloader {
     padding: 200px 0;
+    position: relative;
 }
 
 .spinner::before{

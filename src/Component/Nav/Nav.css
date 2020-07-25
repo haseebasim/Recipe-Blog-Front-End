@@ -29,10 +29,9 @@ nav{
     font-size: medium;
 }
 
-.nav_brand > img{
-    width: 80px;
+.nav_brand > a > img{
+    width: 90px;
     margin-bottom: 10px;
-    
 }
 
 
@@ -66,7 +65,7 @@ nav{
 
    
     
-    .nav_brand >img {
+    .nav_brand > a >img {
         margin-right: 0;
         padding:0 10px;
         text-align: center;
