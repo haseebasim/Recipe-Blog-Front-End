@@ -20,7 +20,7 @@ function AdminHome() {
 
   const handleDelete = (id) => {
       axios.delete(`/post/${id}`).then((res)=>{
-         
+         window.location.reload()
       })
       .catch(res=>{
           console.log(res.data)
