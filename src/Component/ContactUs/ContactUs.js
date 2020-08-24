@@ -55,7 +55,7 @@ function ContactUs() {
           </a>
         </div>
         <h2>OR</h2>
-        <form className="contact_form">
+        <form className="contact_form" onSubmit={handleContact}>
           <div className="contact_item">
             <input
               className="contact_input"
@@ -92,7 +92,6 @@ function ContactUs() {
           <button
             className="contact_submit"
             type="submit"
-            onClick={handleContact}
           >
             Submit
           </button>

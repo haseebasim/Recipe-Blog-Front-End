@@ -32,9 +32,12 @@ function Suggestion() {
     <div className="suggestion">
       <h1>Suggestions</h1>
       <p>
-        Did you like our work? Or do u think we can imporve our work? Do you have any suggestions? Feel free to give your suggestions using the following form. We always look forward to people giving us feed back and suggesting dishes. Thank you.
+        Did you like our work? Or do u think we can imporve our work? Do you
+        have any suggestions? Feel free to give your suggestions using the
+        following form. We always look forward to people giving us feed back and
+        suggesting dishes. Thank you.
       </p>
-      <form className="suggestion_form">
+      <form className="suggestion_form" onSubmit={handleSuggestion}>
         <textarea
           type="text"
           placeholder="Suggestions?"
@@ -45,13 +48,9 @@ function Suggestion() {
           name="Suggestions"
           required
         />
-        <button type="submit" onClick={handleSuggestion}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
-      <div className="snackbar">
-          Suggestion has been submited
-      </div>
+      <div className="snackbar">Suggestion has been submited</div>
     </div>
   ) : (
     <div className="ask_login">

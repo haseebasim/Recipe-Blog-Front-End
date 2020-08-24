@@ -52,7 +52,7 @@ function AdminHome() {
         <span className="fa fa-plus"></span>
         <p>ADD POST</p>
       </Link>
-      {Loading ? <div>DATA is Loading</div> : <Cards />}
+      {Loading ? <div class='loadData'>Data is Loading</div> : <Cards />}
     </div>
   );
 }

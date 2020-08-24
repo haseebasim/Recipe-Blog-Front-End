@@ -2,6 +2,13 @@
     margin: 50px 20px;
 }
 
+.loadData{
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 25px;
+}
+
 
 .ah_card{
     display: flex;
@@ -18,6 +25,8 @@
 }
 
 .ah_card_btn{
+    display: flex;
+    align-items: center;
     background-color: none;
     border: none;
     margin: 0 15px;
