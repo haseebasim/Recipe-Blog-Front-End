@@ -32,6 +32,10 @@ footer{
     cursor: pointer;
 }
 
+.social_links > a:visited{
+    color: #FF9D33;
+}
+
 .footer_nav_container{
     display: flex;
     color: white;

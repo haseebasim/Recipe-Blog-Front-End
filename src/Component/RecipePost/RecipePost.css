@@ -125,6 +125,10 @@
   cursor: pointer;
 }
 
+.post_social_links > a:visited{
+  color: #ff9d33;
+}
+
 .post_comments {
   margin-left: 0;
   padding-left: 20px;
