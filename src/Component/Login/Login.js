@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 import "./Login.css";
 // import XML from "./dummy.xml";
 import axios from "../../utils/Axios";
@@ -36,7 +38,7 @@ function Login() {
     }
     e.preventDefault();
     if (Form === "Login" && run) {
-      
+
       axios
         .post("/user_login", {
           email: values.email,
@@ -150,7 +152,7 @@ function Login() {
         <div className="logedin_text">
           <span>{window.sessionStorage.getItem("userName")}</span>
           <p>Login Succesful</p>
-          <p>Press the <span>Logout</span> button in the navigation bar to logout</p>  
+          <p>Press the <span>Logout</span> button in the navigation bar to logout</p>
         </div>
       ) : (
         <div className="login_signup">
@@ -234,6 +236,21 @@ function Login() {
                   {Form}
                 </button>
               </div>
+              <GoogleLogin
+                clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                render={renderProps => (
+                  <button onClick={renderProps.onClick} disabled={renderProps.disabled} class="google-btn">
+                    Login with Google
+                    </button>
+                )}
+                buttonText="Login"
+                cookiePolicy={'single_host_origin'}
+              />
+              <FacebookLogin
+                cssClass="fb-btn"
+                appId="1088597931155576"
+                autoLoad={true}
+                fields="name,email,picture" />
               {Form === "Login" ? (
                 <div>
                   <p className="signup_text">
