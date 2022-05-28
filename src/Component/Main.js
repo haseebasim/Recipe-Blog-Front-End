@@ -10,13 +10,12 @@ import RecipePost from './RecipePost/RecipePost'
 import About from './About/About'
 import AdminLogin from './AdminLogin/AdminLogin'
 import Admin from '../AdminComponent/Admin/Admin'
-import ProtectedRoute from './AdminLogin/ProtectedRoute'
 
 function Main({setShow}) {
     return (
       <div style={{ height: "100%" }}>
         <Switch>
-          <ProtectedRoute
+          <Route
             path="/admin"
             component={(props) => <Admin {...props} setShow={setShow} />}
           />

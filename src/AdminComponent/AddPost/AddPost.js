@@ -62,7 +62,7 @@ function AddPost({ calledFrom = "", id = null }) {
 
   const handleRequest = (e) => {
     e.preventDefault();
-    
+
     if (calledFrom === "edit") {
       axios
         .patch(`/update/post/${id}`, {
@@ -113,7 +113,7 @@ function AddPost({ calledFrom = "", id = null }) {
           console.log(err);
         });
     }
-    
+
   };
 
   const handleTags = (e) => {
@@ -171,10 +171,10 @@ function AddPost({ calledFrom = "", id = null }) {
         <div>The Data is Loading</div>
       ) : (
         <div className="addpost">
-          <h1>Add Post</h1>
+          <h1>Add New Post</h1>
           <form className="addpost_form">
             <div className="addpost_input_fields_container">
-              <label>Title</label>
+              <label className="label-head">Title</label>
               <div className="addpost_inputs">
                 <input
                   type="text"
@@ -186,7 +186,7 @@ function AddPost({ calledFrom = "", id = null }) {
                 />
               </div>
               <div className="image_selector">
-                <input type="file" onChange={handleFile} accept="image/*" />
+                <input type="file" onChange={handleFile} accept="image/*" className="image-btn" />
                 {/* <button type='button' onClick={handleImg} >Submit IMG</button> */}
               </div>
             </div>
@@ -220,13 +220,13 @@ function AddPost({ calledFrom = "", id = null }) {
             </div>
             <div className="tag_container">
               <div>
-                <label>Available Tags</label>
+                <label class="tag-head">Available Tags</label>
                 <div>
                   <Tags />
                 </div>
               </div>
               <div>
-                <label>Selected Tags</label>
+                <label class="tag-head">Selected Tags</label>
                 <div className="selected_tags_container">
                   {tags
                     ? tags.map((tag, index) => {
@@ -253,8 +253,8 @@ function AddPost({ calledFrom = "", id = null }) {
               />
               <RecipeSteps steps={steps} handleSteps={handleSteps} />
             </div>
-            <button type="submit" onClick={handleRequest}>
-              submit
+            <button type="submit" onClick={handleRequest} class="submit-btn">
+              Submit
             </button>
           </form>
         </div>
