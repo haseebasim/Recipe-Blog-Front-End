@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 export default axios.create({
-  baseURL: "https://szfood-back-end.herokuapp.com",
+  baseURL: "https://sz-food-backend.herokuapp.com",
   responseType: "json",
 });
